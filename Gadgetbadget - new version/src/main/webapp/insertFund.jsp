@@ -25,7 +25,7 @@
 					
 				<div class="container">
 				
-					<form id="formItem" name="formItem" method="post" action="insertFund.jsp">
+					<form id="formItem" name="formItem">
 
 						PID:
 						<input id="pId" name="pId" type="text"class="form-control form-control-sm">

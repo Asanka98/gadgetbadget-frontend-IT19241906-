@@ -29,10 +29,10 @@ $(document).on("click", "#btnSave", function(event)
 $(document).on("click", ".btnUpdate", function(event)
 {
 	 $("#hidItemIDSave").val($(this).closest("tr").find('#hidItemIDUpdate').val());
-	 $("#itemCode").val($(this).closest("tr").find('td:eq(0)').text());
-	 $("#itemName").val($(this).closest("tr").find('td:eq(1)').text());
-	 $("#itemPrice").val($(this).closest("tr").find('td:eq(2)').text());
-	 $("#itemDesc").val($(this).closest("tr").find('td:eq(3)').text());
+	 $("#pId").val($(this).closest("tr").find('td:eq(0)').text());
+	 $("#researcherId").val($(this).closest("tr").find('td:eq(1)').text());
+	 $("#clientId").val($(this).closest("tr").find('td:eq(2)').text());
+	 $("#amount").val($(this).closest("tr").find('td:eq(3)').text());
 }); 
 // CLIENT-MODEL================================================================
 function validateItemForm()
@@ -146,7 +146,7 @@ $(document).on("click", ".btnRemove", function(event)
 	{
 	url : "FundAPI",
 	type : "DELETE",
-	data : "fundId=" + $(this).data("fundid"),
+	data : "fundid=" + $(this).data("fundid"),
 	dataType : "text",
 	complete : function(response, status)
 	{

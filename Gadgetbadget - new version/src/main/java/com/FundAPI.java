@@ -50,7 +50,7 @@ public class FundAPI extends HttpServlet {
 				 Integer.parseInt(request.getParameter("clientId")),
 				 Float.parseFloat(request.getParameter("amount")));
 				 response.getWriter().write(output);
-		doGet(request, response);
+
 	}
 	
 	private static Map getParasMap(HttpServletRequest request)
@@ -93,6 +93,7 @@ public class FundAPI extends HttpServlet {
 				 request.getParameter("researcherId"),
 				 request.getParameter("clientId"),
 				 request.getParameter("amount"));
+				 response.getWriter().write(output);
 	}
 
 	/**
@@ -100,7 +101,11 @@ public class FundAPI extends HttpServlet {
 	 */
 	protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String output = fundObj.deleteFund(request.getParameter("hidItemIDDelete"));
+		Map paras = getParasMap(request);
+		
+		String output = fundObj.deleteFund(paras.get("fID").toString());
+		
+		response.getWriter().write(output);
 	}
 
 }

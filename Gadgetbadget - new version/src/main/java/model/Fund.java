@@ -60,7 +60,9 @@ public class Fund {
 					 
 					 //close connection with database
 					 con.close();
-					 
+					 String fundObj = listFunds(); 
+					 output = "{\"status\":\"success\", \"data\": \"" + 
+							 fundObj + "\"}"; 
 					 output = "Inserted Sucessfully";
 					 	 
 			 }catch(Exception e) {
@@ -121,7 +123,7 @@ public class Fund {
 				output += "<td>" + amount + "</td>";
 				
 				// buttons
-				output += "<td><input name='btnUpdate' type='button' value='Update' class=' btnUpdate btn btn-secondary' data-fundid='" + fID + "'></td>"
+				output += "<td><input name='btnUpdate' type='button' value='Update' class='btnUpdate btn btn-secondary' data-fundid='" + fID + "'></td>"
 	            		+ "<td><input name = 'btnRemove' type='button' value = 'Remove' "
 	            		+ "class = 'btnRemove btn btn-danger' data-fundid='" + fID + "'>"
 	            		+"</td></tr>";
@@ -170,7 +172,9 @@ public class Fund {
 			preparedStmt.execute();
 			
 			con.close();
-			
+			 String fundObj = listFunds(); 
+			 output = "{\"status\":\"success\", \"data\": \"" + 
+					 fundObj + "\"}"; 			
 			output = "Deleted successfully";
 			
 			
