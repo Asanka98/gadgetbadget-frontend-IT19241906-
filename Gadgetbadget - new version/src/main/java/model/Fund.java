@@ -88,13 +88,15 @@ public class Fund {
 			}
 			
 			// Prepare the html table to be displayed
-			output ="<table border='1'>"+
+			output ="<table border='1' style='margin-top:50px'/>"+
 					"<tr>"+
 					"<th>Fund ID</th>"+
 					"<th>Item Name</th>" +
 					"<th>Project ID</th>" +
 					"<th>Client ID</th>" +
 					"<th>Amount</th>"+
+					"<th>Update</th>"+
+					"<th>Delete</th>"+
 					"</tr>";
 			
 			String query = " select * from fund ";
@@ -119,7 +121,10 @@ public class Fund {
 				output += "<td>" + amount + "</td>";
 				
 				// buttons
-				output += "</form></tr>";
+				output += "<td><input name='btnUpdate' type='button' value='Update' class=' btnUpdate btn btn-secondary' data-fundid='" + fID + "'></td>"
+	            		+ "<td><input name = 'btnRemove' type='button' value = 'Remove' "
+	            		+ "class = 'btnRemove btn btn-danger' data-fundid='" + fID + "'>"
+	            		+"</td></tr>";
 				
 			}
 			
@@ -202,6 +207,9 @@ public class Fund {
 			 // execute the statement
 			 preparedStmt.execute();
 			 con.close();
+			 String fundObj = listFunds(); 
+			 output = "{\"status\":\"success\", \"data\": \"" + 
+					 fundObj + "\"}"; 
 			 output = "Updated successfully";
 			
 			

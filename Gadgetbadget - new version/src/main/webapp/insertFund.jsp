@@ -13,60 +13,11 @@
 </head>
 <body>
 
-<%
-		
-		//Save---------------------------------
-		if (request.getParameter("fundCode") != null)
-		{
-			
-			 Fund fundObj = new Fund();
-			 String stsMsg = "";
-		 
-			//Insert--------------------------
-			if (request.getParameter("hidItemIDSave") == "")
-			 {
-				 stsMsg = fundObj.insertFund(
-										     //request.getParameter("fundId"),
-											 Integer.parseInt(request.getParameter("pId")),
-											 Integer.parseInt(request.getParameter("researcherId")),
-											 Integer.parseInt(request.getParameter("clientId")),
-											 Float.parseFloat(request.getParameter("amount")));
-			 }
-			
-			else//Update----------------------
-			 {
-				 stsMsg = fundObj.updateFund(
-											 request.getParameter("fundId"),
-											 request.getParameter("pId"),
-											 request.getParameter("researcherId"),
-											 request.getParameter("clientId"),
-											 request.getParameter("amount"));
-			 }
-			
-		 	session.setAttribute("statusMsg", stsMsg);
-		 
-		} 
-	
-	%>
-	
-	<%
-	
-		if (request.getParameter("hidItemIDDelete") != null)
-		{
-			
-			 Fund itemObj = new Fund();
-			 String stsMsg =
-			 itemObj.deleteFund(request.getParameter("hidItemIDDelete"));
-			 session.setAttribute("statusMsg", stsMsg);
-			 
-		}
-%>
-
 			<div class="container">
 			
-				 	<h1>My Store</h1>
+				 	<h1>Welcome</h1>
 				 	
-				 	<p>please use this forum to <b>Insert Items</b></p>
+				 	<p>please use this forum to <b>Insert Funds</b></p>
 				 	
 				</div>
 				
@@ -101,6 +52,14 @@
 			
 			<div id="alertSuccess" class="alert alert-success"></div>
      		<div id="alertError" class="alert alert-danger"></div>
-
+     		
+     		<div class="container">
+     		<div id="divItemsGrid">
+			<%
+			Fund itemObj = new Fund();
+			out.print(itemObj.listFunds());
+			%>
+			</div>
+			</div>
 </body>
 </html>
